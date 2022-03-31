@@ -1,0 +1,6 @@
+sitelocation.settings.link:
+  title: 'Site Location Configuration'
+  description: 'Specify site location.'
+  route_name: sitelocation.settings
+  parent: system.admin_config_regional
+  weight: -1

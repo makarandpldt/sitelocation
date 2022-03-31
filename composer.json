@@ -1,0 +1,15 @@
+{
+    "name": "makarandchavan/sitelocation",
+    "description": "Drupal 9 module which help to display current time and date based on configured values",
+    "type": "project",
+    "require": {
+        "drupal/core-recommended": "^9.3"
+    },
+    "authors": [
+        {
+            "name": "Makarand Chavan",
+            "email": "makarand.chavan@ymail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}

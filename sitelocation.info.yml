@@ -1,0 +1,8 @@
+name: 'Site Location'
+type: module
+description: 'A simple D9 module which provides ability to display current site location and time'
+core_version_requirement: ^8 || ^9
+package: 'Regional'
+configure: sitelocation.settings
+dependencies:
+  - drupal:block

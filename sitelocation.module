@@ -1,0 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_theme().
+ */
+function sitelocation_theme(): array
+{
+    return [
+        'sitelocation_block' => [
+            'variables' => [
+                'site_datetime' => '',
+            ],
+        ],
+    ];
+}

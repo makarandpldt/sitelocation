@@ -1,0 +1,4 @@
+services:
+  sitelocation.config:
+    class:  Drupal\sitelocation\Services\SiteLocationService
+    arguments: ['@config.factory']
