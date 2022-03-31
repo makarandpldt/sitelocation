@@ -58,7 +58,7 @@ class SiteLocationBlock extends BlockBase implements ContainerFactoryPluginInter
     }
 
     /**
-    * {@inheritdoc}
+    * build function for Blocks.
     */
     public function build(): array
     {
