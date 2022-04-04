@@ -2,3 +2,8 @@ services:
   sitelocation.config:
     class:  Drupal\sitelocation\Services\SiteLocationService
     arguments: ['@config.factory']
+
+  sitelocation.setexpires:
+    class: Drupal\sitelocation\EventSubscriber\SetExpiresSubscriber
+    tags:
+      - { name: event_subscriber }

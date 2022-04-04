@@ -6,3 +6,4 @@ package: 'Regional'
 configure: sitelocation.settings
 dependencies:
   - drupal:block
+  - drupal:big_pipe

@@ -6,19 +6,21 @@ namespace Drupal\sitelocation\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Security\TrustedCallbackInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\sitelocation\Services\SiteLocationService;
+use Drupal\Core\Cache\Cache;
 
 /**
  * Provides a 'Site Location' Block.
  *
  * @Block(
  *   id = "sitelocation_block",
- *   admin_label = @Translation("Site Location Block"),
+ *   admin_label = @Translation("Site DateTime"),
  *   category = @Translation("Location"),
  * )
  */
-class SiteLocationBlock extends BlockBase implements ContainerFactoryPluginInterface
+class SiteLocationBlock extends BlockBase implements ContainerFactoryPluginInterface, TrustedCallbackInterface
 {
     /**
      * SiteLocationBlock class constructor.
@@ -67,10 +69,31 @@ class SiteLocationBlock extends BlockBase implements ContainerFactoryPluginInter
 
         // Return formatted Datetime.
         $renderable = [
-            '#theme' => 'sitelocation_block',
-            '#site_datetime' => $site_datetime,
+            '#lazy_builder' => [static::class . '::displayDateTime', [$site_datetime]],
+            '#create_placeholder' => true,
         ];
 
         return $renderable;
+    }
+
+    public function getCacheTags()
+    {
+        return Cache::mergeTags(parent::getCacheTags(), array('sitelocation'));
+    }
+
+    // Implements TrustedCallbackInterface function.
+    public static function trustedCallbacks(): array
+    {
+        return ['displayDateTime'];
+    }
+
+    // Lazy loader callback function.
+    public static function displayDateTime(string $site_datetime): array
+    {
+        sleep(3);   // delay 3 seconds.
+        return array(
+            '#theme' => 'sitelocation_block',
+            '#site_datetime' => $site_datetime,
+        );
     }
 }

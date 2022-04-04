@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - sitelocation
+  theme:
+    - bartik
+id: sitelocationblock
+theme: bartik
+region: sidebar_second
+weight: 0
+provider: null
+plugin: sitelocation_block
+settings:
+  id: sitelocation_block
+  label: 'Site Location Block'
+  label_display: visible
+  provider: sitelocation
+visibility: {  }

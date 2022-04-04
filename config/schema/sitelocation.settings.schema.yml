@@ -1,0 +1,13 @@
+sitelocation.settings:
+  type: config_object
+  label: 'Site location configuration'
+  mapping:
+    sitelocation_country:
+      type: string
+      label: 'Japan'
+    sitelocation_city:
+      type: string
+      label: 'Tokyo'
+    sitelocation_timezone:
+      type: string
+      label: 'Asia/Kolkata'

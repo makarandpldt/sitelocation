@@ -7,6 +7,7 @@ namespace Drupal\sitelocation\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Locale\CountryManager;
+use Drupal\Core\Cache\Cache;
 
 /**
  * Configure settings for this site.
@@ -121,6 +122,9 @@ class SiteLocationConfig extends ConfigFormBase
             ->set('sitelocation_city', $form_state->getValue('sitelocation_city'))
             ->set('sitelocation_timezone', $form_state->getValue('sitelocation_timezone'))
             ->save();
+
+        // Invalidate cache tag for this block.
+        Cache::invalidateTags(['sitelocation']);
 
         parent::submitForm($form, $form_state);
     }
